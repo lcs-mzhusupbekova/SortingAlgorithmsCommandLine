@@ -17,37 +17,51 @@ func random(between min: UInt32, and max: UInt32) -> Int {
 
 // ----------- Start of main part of program -----------
 
-// Ask the user if they are ready to begin
-print("Press any key to generate the unsorted list.", terminator: "")
 
-// Wait for a key to be pressed
-let input = readLine()
+// Begin your implementation below...
 
-// Make an empty array / list
-var numbers : [Int] = []
+// populate the array
+var unsorted : [Int] = []
+var sorted : [Int] = []
+//for _ in 1...7 {
+//    unsorted.append( random(between: 1, and: 14) )
+//}
+unsorted.append(7)
+unsorted.append(3)
+unsorted.append(10)
+unsorted.append(6)
+unsorted.append(8)
 
-// Populate the array
-for _ in 1...10 {
-    numbers.append( random(between: 1, and: 50) )
+
+// keep looping until the unsorted list is empty
+while unsorted.count > 0 {
+    
+    // takes a finale number of unsorted list
+    var numberToBeInserted = unsorted[unsorted.count-1]
+    unsorted.remove(at: unsorted.count - 1)   // Remove number at end of the array
+    
+    // start to populate sorting list
+    if sorted.count == 0 {
+        sorted.append (numberToBeInserted)
+    } else {
+        //  compare index 0 in sorted and index 3 in unsorted
+        if numberToBeInserted > sorted [sorted.count - 1] {
+            let temporaryValue = sorted [sorted.count - 1]
+            sorted [sorted.count - 1] = numberToBeInserted
+            numberToBeInserted = temporaryValue
+        
+        } else {
+    sorted.append(numberToBeInserted )
+        }
+    }
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
 }
-
-// Show the user the contents of the array
-print("-----")
-print("The contents of the unsorted list:")
-for i in 0...numbers.count - 1 {
-    print("Index \(i), value: \(numbers[i])")
-}
-print("-----")
-
-// ----------- Write code to sort the array here -----------
-print("Now sorting the array...")
-
-// ----------- Final part of the program, show the sorted list -----------
-print("-----")
-print("The contents of the sorted list:")
-for i in 0...numbers.count - 1 {
-    print("Index \(i), value: \(numbers[i])")
-}
-print("-----")
-
-
