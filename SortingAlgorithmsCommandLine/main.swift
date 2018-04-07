@@ -5,11 +5,9 @@
 //  Created by Gordon, Russell on 2018-02-26.
 //  Copyright © 2018 Gordon, Russell. All rights reserved.
 //
-
 import Foundation
 
 // --------------- Convenience functions ---------------
-
 // Generates a random number between the minimum and maximum values given (inclusive)
 func random(between min: UInt32, and max: UInt32) -> Int {
     return Int(arc4random_uniform(max - min + 1) + min)
@@ -18,60 +16,59 @@ func random(between min: UInt32, and max: UInt32) -> Int {
 // ----------- Start of main part of program -----------
 
 
-// Begin your implementation below...
 
-// populate the array
-var unsorted : [Int] = []
-// var sorted : [Int] = []
+// Make an empty array
+var numbersSorting : [Int] = []
 
-
-//for _ in 1...7 {
-//    unsorted.append( random(between: 1, and: 14) )
+// Populate the array
+//for _ in 1...17 {
+//    numbers.append( random(between: 1, and: 11) )
 //}
 
-unsorted.append(7)
-unsorted.append(3)
-unsorted.append(10)
-unsorted.append(6)
-unsorted.append(8)
+numbersSorting.append(7)
+numbersSorting.append(3)
+numbersSorting.append(10)
+numbersSorting.append(6)
+numbersSorting.append(8)
+
+print("-----------------------")
+
+print("The contents of the unsorted list:")// easy to see in what's sorted and what's not
+for i in 0...numbersSorting.count - 1 {
+    print("Index \(i), value: \(numbersSorting[i])")
+}
+print("-----------------------")
 
 
-
-unsorted.sort(by: >) // the function sort compares variables and put them in right placement
-print(unsorted) // print result
+// ----------- Write code to sort the array here -----------
 
 
+// sort the entire array
+for _ in 1...numbersSorting.count {
+    // loop find the highest number
+    for i in 0...numbersSorting.count-2 {
+        // instead on 1 used 0 and instead of -1 used -2, in order to have max value in lowest index which is 0 and lowest value in highest index. This is the method of sorting I showed in video by using Mr.Gordon's cards.
+        
+        // compare the current number to the previous number
+        if  numbersSorting[i + 1] > numbersSorting[i] {
+            // change index position, so lowest val in highest index
+            let tempVal = numbersSorting[i]
+            numbersSorting[i] = numbersSorting[i + 1]
+            numbersSorting[i + 1] = tempVal
+            
+        }
+    }
+    
+}
 
 
-
-// keep looping until the unsorted list is empty
-//while unsorted.count > 0 {
-//
-//    // takes a finale number of unsorted list
-//    // like in cards takes the bottom
-//    var numberToBeInserted = unsorted[unsorted.count-1]
-//    unsorted.remove(at: unsorted.count - 1)   // Remove number at end of the array
-//
-//    // start to populate sorting list
-//    if sorted.count == 0 {
-//        sorted.append (numberToBeInserted)
-//
-//    } else {
-//
-//
-//        // set a flag to tell if the number was inserted
-//        var numberWasInserted = false
-//
-//        for i in 0...sorted.count - 1 {  //loop to compare
-//            // takes the next unsorted number from the bottom
-//            if numberToBeInserted > sorted[i]  {  // if unsorted bigger than sorted
-//                sorted.insert(numberToBeInserted, at: i)
-//                numberWasInserted = true
-//                break
-// }
-//}
-//}
-//}
+// ----------- Final part of the program, show the sorted list -----------
+print("-----------------------")
+print("The contents of the sorted list:")
+for i in 0...numbersSorting.count - 1 {
+    print("Index \(i), value: \(numbersSorting[i])")
+}
+print("-----------------------")
 
 
 
