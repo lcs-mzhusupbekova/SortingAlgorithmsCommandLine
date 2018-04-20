@@ -46,10 +46,10 @@ print("-----------------------")
 // sort the entire array
 for _ in 1...numbersSorting.count {
     // loop find the highest number
-    for i in 0...numbersSorting.count-2 {
+    for i in 0...numbersSorting.count - 2 {
         // instead on 1 used 0 and instead of -1 used -2, in order to have max value in lowest index which is 0 and lowest value in highest index. This is the method of sorting I showed in video by using Mr.Gordon's cards.
         
-        // compare the current number to the previous number
+        //pushing highest number to lowest index
         if  numbersSorting[i + 1] > numbersSorting[i] {
             // change index position, so lowest val in highest index
             let tempVal = numbersSorting[i]
